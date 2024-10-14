@@ -8,9 +8,10 @@ import useNetworkStatus from './useNetworkStatus';
 import usePermission from './usePermission';
 import useRefresh from './useRefresh';
 import useThrottle from './useThrottle';
-import useTimerCountdown from './useTimerCountdown';
+import useTimerCountDown from './useTimerCountDown';
 import useAppShare from './useAppShare';
 import useStatusBar from './useStatusBar';
+import useDeviceTheme from './useDeviceTheme';
 
 export {
   useAppState,
@@ -23,7 +24,8 @@ export {
   usePermission,
   useRefresh,
   useThrottle,
-  useTimerCountdown,
+  useTimerCountDown,
   useAppShare,
-  useStatusBar
+  useStatusBar,
+  useDeviceTheme
 };
