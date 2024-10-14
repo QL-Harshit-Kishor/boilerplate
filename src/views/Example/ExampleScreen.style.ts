@@ -1,7 +1,7 @@
 
 import {StyleSheet} from 'react-native';
 
-const useAppStyles = (theme: AppTheme) => StyleSheet.create({
+const exampleScreenStyles = (theme: AppTheme) => StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -10,4 +10,4 @@ const useAppStyles = (theme: AppTheme) => StyleSheet.create({
   }
 });
 
-export default useAppStyles;
+export default exampleScreenStyles;

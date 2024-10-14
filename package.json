@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "app-icon": "npx rn-ml appicon -s src/assets/appIcon/app.png"
+    "app-icon": "npx rn-ml appicon -s src/assets/appIcon/app.png",
+    "screens": "cd scripts && node generateScreen.js"
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.14.2",

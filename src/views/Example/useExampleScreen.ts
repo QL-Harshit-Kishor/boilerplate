@@ -1,12 +1,12 @@
 
 import {useAppTheme} from '@app/theme';
 import React, {useMemo} from 'react';
-import useAppStyles from './ExampleScreen.style';
+import exampleScreenStyles from './ExampleScreen.style';
 import {setAppLanguage} from '@app/i18n';
 
 const useExampleScreen = () => {
   const theme = useAppTheme();
-  const styles = useMemo(() => useAppStyles(theme), [theme]);
+  const styles = useMemo(() => exampleScreenStyles(theme), [theme]);
 
   // State for count variable
   const [count, setCount] = React.useState(0);

@@ -1,5 +1,1 @@
-import ExampleScreen from './Common/Example/ExampleScreen';
-
-export {
-  ExampleScreen
-};
+export {default as ExampleScreen} from './Example/ExampleScreen';
