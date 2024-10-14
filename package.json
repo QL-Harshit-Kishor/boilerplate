@@ -9,7 +9,8 @@
     "start": "react-native start",
     "test": "jest",
     "app-icon": "npx rn-ml appicon -s src/assets/appIcon/app.png",
-    "screens": "cd scripts && node generateScreen.js"
+    "screens": "cd scripts && node generateScreen.js",
+    "refresh": "bash ./scripts/refresh.sh"
   },
   "dependencies": {
     "@react-native-clipboard/clipboard": "^1.14.2",

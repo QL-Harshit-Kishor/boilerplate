@@ -1,22 +1,23 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {PaperProvider} from 'react-native-paper';
-import {darkTheme, lightTheme} from './theme';
-import i18n, {useAppLangauage} from './i18n';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {ExampleScreen} from '@app/views';
-import {useDeviceTheme} from './hooks';
+import {useDeviceTheme} from '@app/hooks';
+import {ErrorBoundary} from '@app/components';
+import {useAppLangauage} from './i18n';
+import {darkTheme, lightTheme} from './theme';
 
 const App = () => {
-
-  // Initialize i18n with the language detector and resources
-  const initi18 = i18n;
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <AppContainer />
-    </GestureHandlerRootView>
+    <>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <ErrorBoundary catchErrors='always'>
+          <AppContainer />
+        </ErrorBoundary>
+      </GestureHandlerRootView>
+    </>
+
   );
 };
 
