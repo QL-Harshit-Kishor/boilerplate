@@ -11,7 +11,7 @@ type LottieProps = extractComponentPropsType<LottieView>;
 
 // Because Lottie has a bug that stops animation when in background (ios)
 // See https://github.com/react-native-community/lottie-react-native/issues/412
-const CLottie: React.FC<LottieProps> = ({...rest}) => {
+const AppLottieView: React.FC<LottieProps> = ({...rest}) => {
   const [appState, setAppState] = useState(AppState.currentState);
 
   const lottieRef = useRef<LottieView>(null);
@@ -38,10 +38,10 @@ const CLottie: React.FC<LottieProps> = ({...rest}) => {
   return <LottieView ref={lottieRef} {...rest} />;
 };
 
-export default CLottie;
+export default AppLottieView;
 
 /*
-<CLottie
+<AppLottieView
     style={{
         height: 250,
         width: 200

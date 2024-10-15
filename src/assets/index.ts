@@ -1,14 +1,10 @@
-
-// Import all Svg Components from here
-import {default as AppIconSvg} from './svg/app.svg';
-
 //! ==============================================================================
-// Import all Fonts  from here
-const SvgConst = {
-  AppIconSvg
-};
 
-//! ==============================================================================
+import GIFS from './gif';
+import IMAGES from './images';
+import LOTTIES from './lottie';
+import {SVGIcons} from './svg';
+
 // Import all Fonts  from here
 const FontConst = {
   Roboto: {
@@ -24,35 +20,16 @@ const FontConst = {
     bold: 'Satoshi-Bold',
   },
 };
-//! ==============================================================================
-// Import all Lottie path from here
-const LottieConst = {
-  animatedLoader: require('./lottie/loader.json')
-};
 
-
-
-//! ==============================================================================
-// Import all gif path from here
-const GifConst = {
-  animatedLoader: require('./lottie/loader.gif')
-};
-
-
-//! ==============================================================================
-// Import all Image path from here
-const ImageConst = {
-  personPng: require('./images/person.png')
-};
 
 //! ==============================================================================
 // Consolidated export for easier access
 const Assets = {
   font: FontConst,
-  lottie: LottieConst,
-  gif: GifConst,
-  image: ImageConst,
-  svg: SvgConst,
+  lottie: LOTTIES,
+  gif: GIFS,
+  image: IMAGES,
+  svg: SVGIcons,
 };
 
 export default Assets;

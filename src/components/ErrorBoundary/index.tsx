@@ -12,7 +12,7 @@ interface State {
   errorInfo: ErrorInfo | null;
 }
 
-export class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends React.Component<Props, State> {
   state = {error: null, errorInfo: null};
 
   // If an error in a child is encountered, this will run
@@ -65,3 +65,5 @@ export class ErrorBoundary extends React.Component<Props, State> {
       : this.props.children;
   }
 }
+
+export default ErrorBoundary;

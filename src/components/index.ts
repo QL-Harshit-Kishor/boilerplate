@@ -1,12 +1,19 @@
+import ErrorBoundary from './ErrorBoundary';
+import GlobalIndicator from './modal/GlobalIndicator';
+import AppButton from './shared/AppButton';
+import AppFastImage from './shared/AppFastImage';
+import AppLottieView from './shared/AppLottieView';
+import AppSvg from './shared/AppSvg';
+import AppVectorIcon from './shared/AppVectorIcon';
 
-import CIcon from './shared/CIcon';
-import CFastImage from './shared/CFastImage';
-import CLottie from './shared/CLottie';
-import {ErrorBoundary} from './ErrorBoundary/ErrorBoundary';
 
 export {
-  CIcon,
-  CFastImage,
-  CLottie,
-  ErrorBoundary
+  AppButton,
+  AppFastImage,
+  AppLottieView,
+  AppSvg,
+  AppVectorIcon,
+  ErrorBoundary,
+  GlobalIndicator
 };
+

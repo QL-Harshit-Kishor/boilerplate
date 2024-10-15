@@ -10,6 +10,7 @@
     "test": "jest",
     "app-icon": "npx rn-ml appicon -s src/assets/appIcon/app.png",
     "screens": "cd scripts && node generateScreen.js",
+    "assets": "cd scripts && node generateAssets.js",
     "refresh": "bash ./scripts/refresh.sh"
   },
   "dependencies": {
@@ -51,6 +52,7 @@
     "babel-jest": "^29.6.3",
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.19.0",
+    "inquirer": "^12.0.0",
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-native-svg-transformer": "^1.5.0",

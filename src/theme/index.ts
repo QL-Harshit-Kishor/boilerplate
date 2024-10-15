@@ -26,6 +26,7 @@ const lightTheme = {
     primary: '#3498db',
     secondary: '#f1c40f',
     tertiary: '#a1b2c3',
+    textColor: 'black',
   },
 
 };
@@ -40,6 +41,7 @@ const darkTheme = {
     primary: '#3498db',
     secondary: '#f1c40f',
     tertiary: '#a1b2c3',
+    textColor: 'white',
   },
 };
 

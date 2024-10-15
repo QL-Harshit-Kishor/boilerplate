@@ -7,6 +7,7 @@ import {useDeviceTheme} from '@app/hooks';
 import {ErrorBoundary} from '@app/components';
 import {useAppLangauage} from './i18n';
 import {darkTheme, lightTheme} from './theme';
+import GlobalIndicator from './components/modal/GlobalIndicator';
 
 const App = () => {
   return (
@@ -40,7 +41,12 @@ const AppContainer = () => {
           barStyle={barStyle}
           backgroundColor={theme.colors.background}
         />
+        {/* This will start screen of app -> SplashScreen */}
         <ExampleScreen />
+        <>
+          {/* Inside this tag can put all global modals */}
+          <GlobalIndicator />
+        </>
       </PaperProvider>
     </>
 
