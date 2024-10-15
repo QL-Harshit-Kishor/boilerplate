@@ -5,15 +5,19 @@ import {Pressable, Text, View} from 'react-native';
 import useExampleScreen from './useExampleScreen';
 import {AppButton, AppLottieView, AppSvg, AppVectorIcon} from '@app/components';
 import Assets from '@app/assets';
+import {useAppTheme} from '@app/theme';
 
 const ExampleScreen = () => {
   const {count, onDecrementCount, onIncrementCount, onChangeLanguage, styles} = useExampleScreen();
   const t = useAppTranslation();
+  const theme = useAppTheme();
 
   return (
     <View style={styles.container}>
       <Text>Hello {t('welcome')}</Text>
-      <Text>Count: {count}</Text>
+      <Text style={{
+        color: 'red',
+      }} >{theme.myRandomProperty}: {count}</Text>
       <Pressable onPress={onIncrementCount}>
         <View>
           <Text>Increment</Text>
@@ -30,10 +34,17 @@ const ExampleScreen = () => {
         </View>
       </Pressable>
       <View style={{width: '70%'}}>
-        <AppButton title="CButton" leftIcon={<AppVectorIcon name='home' type={IconType.AntDesign} color='red' />}
+        <AppButton
+          title="CButton"
+          leftIcon={<AppVectorIcon name='home' type={IconType.AntDesign}
+            color='red' />}
           onPress={() => {
             //
           }}
+        // animated
+        // loading
+        // disabled
+        // outlined
         />
       </View>
       <View >

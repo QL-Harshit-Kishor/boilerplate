@@ -16,3 +16,7 @@ const AppSvg: React.FC<SVGIconProps> = (props) => {
 };
 
 export default AppSvg;
+
+
+// Use->
+{/* <AppSvg icon={Assets.svg.APP} height={30} width={30} /> */}

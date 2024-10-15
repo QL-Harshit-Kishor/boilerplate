@@ -5,11 +5,12 @@ import {
   StyleProp,
   StyleSheet,
   TextStyle,
-  TouchableOpacity,
-  TouchableOpacityProps,
   View,
   ViewStyle,
   Text,
+  ActivityIndicator,
+  Pressable,
+  PressableProps,
 } from 'react-native';
 
 import Animated, {
@@ -19,7 +20,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const AnimatedButtonComponent =
-  Animated.createAnimatedComponent(TouchableOpacity);
+  Animated.createAnimatedComponent(Pressable);
 
 interface ExtraButtonProps {
   buttonContainerStyle?: StyleProp<ViewStyle>;
@@ -28,20 +29,25 @@ interface ExtraButtonProps {
   title?: React.ReactNode;
   rightIcon?: JSX.Element;
   leftIcon?: JSX.Element;
+  loading?: boolean;
+  disabled?: boolean;
+  animated?: boolean;
+  outlined?: boolean;
 }
 
 export type AnimatedButtonProps = Omit<
-  TouchableOpacityProps,
+  PressableProps,
   'onPressIn' | 'onPressOut' | 'style'
 > & {
   containerStyle?: StyleProp<ViewStyle>;
+  animated?: boolean;
 };
 
 export type ButtonProps = AnimatedButtonProps & ExtraButtonProps;
 
 export const AnimatedTouchableOpacity = React.memo(
   (props: AnimatedButtonProps) => {
-    const {containerStyle} = props;
+    const {containerStyle, animated} = props;
     const scaleValue = useSharedValue(1);
 
     const animatedButtonStyle = useAnimatedStyle(() => {
@@ -53,9 +59,8 @@ export const AnimatedTouchableOpacity = React.memo(
     return (
       <AnimatedButtonComponent
         style={[containerStyle, animatedButtonStyle]}
-        onPressIn={() => (scaleValue.value = withSpring(0.99))}
-        onPressOut={() => (scaleValue.value = withSpring(1))}
-        activeOpacity={0.8}
+        onPressIn={() => animated && (scaleValue.value = withSpring(0.99))}
+        onPressOut={() => animated && (scaleValue.value = withSpring(1))}
         {...props}>
         {props.children}
       </AnimatedButtonComponent>
@@ -64,17 +69,35 @@ export const AnimatedTouchableOpacity = React.memo(
 );
 
 const AppButton = React.memo((props: ButtonProps) => {
-  const {buttonContainerStyle, title, titleContainerStyle, titleStyle} = props;
+  const {
+    buttonContainerStyle,
+    title,
+    titleContainerStyle,
+    titleStyle,
+    disabled = false,
+    outlined = false,
+    animated = false,
+    loading = false,
+  } = props;
   const theme = useAppTheme();
-  const styles = buttonStyles(theme);
 
   return (
     <AnimatedTouchableOpacity
-      containerStyle={[styles.buttonContainer, buttonContainerStyle]}
+      animated={animated}
+      containerStyle={[
+        styles.buttonContainer,
+        buttonContainerStyle,
+        {
+          backgroundColor: outlined ? theme.colors.background : theme.colors.primary,
+          borderColor: theme.colors.primary,
+          borderWidth: outlined ? 1 : 0,
+          opacity: disabled ? 0.6 : 1,
+        }]}
       {...props}>
       <View style={[styles.titleContainer, titleContainerStyle]}>
+        {loading ? <ActivityIndicator size={'small'} /> : null}
         {props.leftIcon}
-        <Text style={titleStyle}>
+        <Text style={[titleStyle]}>
           {title}
         </Text>
         {props.rightIcon}
@@ -85,20 +108,18 @@ const AppButton = React.memo((props: ButtonProps) => {
 
 export default AppButton;
 
-const buttonStyles = ({colors}: AppTheme) =>
-  StyleSheet.create({
-    buttonContainer: {
-      alignItems: 'center',
-      backgroundColor: colors.primary,
-      borderRadius: rpWidth(60),
-      height: rpHeight(45),
-      width: '100%',
-    },
-    titleContainer: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      height: '100%',
-      justifyContent: 'center',
-      width: '100%',
-    },
-  });
+const styles = StyleSheet.create({
+  buttonContainer: {
+    alignItems: 'center',
+    borderRadius: rpWidth(60),
+    height: rpHeight(45),
+    width: '100%',
+  },
+  titleContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: '100%',
+    justifyContent: 'center',
+    width: '100%',
+  },
+});
