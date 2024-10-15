@@ -8,6 +8,7 @@ import Assets from '@app/assets';
 import {useAppTheme} from '@app/theme';
 import {rpFont} from '@app/helpers/responsive';
 import AppTextInput from '@app/components/shared/AppTextInput';
+import Container from '@app/components/Container';
 
 const ExampleScreen = () => {
   const {count, onDecrementCount, onIncrementCount, onChangeLanguage, styles} = useExampleScreen();
@@ -15,7 +16,7 @@ const ExampleScreen = () => {
   const theme = useAppTheme();
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Text>Hello {t('welcome')}</Text>
       <AppText fontSize={rpFont(25)}>{theme.myRandomProperty}: {count}</AppText>
       <View style={{width: '70%'}}>
@@ -59,7 +60,7 @@ const ExampleScreen = () => {
         width: 200
       }} />
 
-    </View>
+    </Container>
   );
 };
 

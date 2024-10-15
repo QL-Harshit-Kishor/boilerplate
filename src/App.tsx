@@ -32,15 +32,9 @@ const AppContainer = () => {
   const appTheme = useDeviceTheme();
   // Apply global theme (dark or light)
   const theme = appTheme == 'dark' ? darkTheme : lightTheme;
-  // Change bar style according to theme
-  const barStyle = appTheme == 'dark' ? 'light-content' : 'dark-content';
   return (
     <>
       <PaperProvider theme={theme}>
-        <StatusBar
-          barStyle={barStyle}
-          backgroundColor={theme.colors.background}
-        />
         {/* This will start screen of app -> SplashScreen */}
         <ExampleScreen />
         <>
