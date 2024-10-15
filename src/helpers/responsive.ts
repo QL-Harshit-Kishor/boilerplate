@@ -4,12 +4,18 @@ const {
   height: SCREEN_HEIGHT
 } = Dimensions.get('window');
 
-const widthBaseScale = SCREEN_WIDTH / 375;
-const heightBaseScale = SCREEN_HEIGHT / 812;
+// resolution changes as per design
+export const DESIGN_WIDTH = 375;
+export const DESIGN_HEIGHT = 812;
+
+const widthBaseScale = SCREEN_WIDTH / DESIGN_WIDTH;
+const heightBaseScale = SCREEN_HEIGHT / DESIGN_HEIGHT;
+
+const scale = Math.min(widthBaseScale, heightBaseScale);
+
 
 function normalize(size: number, based = 'width') {
-  const newSize = (based === 'height') ?
-    size * heightBaseScale : size * widthBaseScale;
+  const newSize = (based === 'height') ? size * heightBaseScale : size * widthBaseScale;
   return Math.round(PixelRatio.roundToNearestPixel(newSize));
 }
 
@@ -23,5 +29,10 @@ export const rpHeight = (size: number) => {
 };
 //for font  pixel
 export const rpFont = (size: number) => {
-  return rpHeight(size);
+  // return rpHeight(size);
+  return Math.ceil(size * scale);
+};
+
+export const moderateScale = (size: number, factor = 1) => {
+  return size + (rpWidth(size) - size) * factor;
 };

@@ -3,9 +3,11 @@ import {useAppTranslation} from '@app/i18n';
 import React from 'react';
 import {Pressable, Text, View} from 'react-native';
 import useExampleScreen from './useExampleScreen';
-import {AppButton, AppLottieView, AppSvg, AppVectorIcon} from '@app/components';
+import {AppButton, AppLottieView, AppSvg, AppText, AppVectorIcon} from '@app/components';
 import Assets from '@app/assets';
 import {useAppTheme} from '@app/theme';
+import {rpFont} from '@app/helpers/responsive';
+import AppTextInput from '@app/components/shared/AppTextInput';
 
 const ExampleScreen = () => {
   const {count, onDecrementCount, onIncrementCount, onChangeLanguage, styles} = useExampleScreen();
@@ -15,9 +17,10 @@ const ExampleScreen = () => {
   return (
     <View style={styles.container}>
       <Text>Hello {t('welcome')}</Text>
-      <Text style={{
-        color: 'red',
-      }} >{theme.myRandomProperty}: {count}</Text>
+      <AppText fontSize={rpFont(25)}>{theme.myRandomProperty}: {count}</AppText>
+      <View style={{width: '70%'}}>
+        <AppTextInput variant='standard' error='error' enterKeyHint='done' />
+      </View>
       <Pressable onPress={onIncrementCount}>
         <View>
           <Text>Increment</Text>
