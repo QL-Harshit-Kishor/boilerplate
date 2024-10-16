@@ -32,12 +32,16 @@ fs.mkdir(`../src/views/${screenFolderName}`, err => {
 import {useAppTheme} from '@app/theme';
 import {useMemo} from 'react';
 import ${styleFileName} from './${fileName}.style';
+import {useAppTranslation} from '@app/i18n';
 
 const use${fileName} = () => {
   const theme = useAppTheme();
+  const t = useAppTranslation();
   const styles = useMemo(() => ${styleFileName}(theme), [theme]);
   return {
-    styles
+    styles,
+    theme,
+    t
   };
 };
 

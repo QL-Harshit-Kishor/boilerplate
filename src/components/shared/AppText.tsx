@@ -51,7 +51,7 @@ const AppText: React.FC<AppTextProps> = ({
         {
           textAlign: align,
           textTransform,
-          color: color ? color : theme.colors.red,
+          color: color ? color : theme.colors.text,
           opacity,
           fontSize,
           fontFamily,

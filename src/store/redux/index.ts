@@ -14,6 +14,7 @@ import {
 
 import {allCombineReducers} from './combine-reducers';
 import sharedPref from '@app/services/sharedPref';
+import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
 
 // ======================================================
 
@@ -110,3 +111,8 @@ export const persistor = persistStore(store);
 export const purgePersistedState = () => {
   persistor.purge();
 };
+
+
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

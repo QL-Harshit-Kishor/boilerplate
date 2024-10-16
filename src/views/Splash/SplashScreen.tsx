@@ -1,16 +1,12 @@
-
+import Navigator from '@app/navigation/Navigator';
 import React from 'react';
-import { View, Text } from 'react-native';
+import SplashView from './ui/SplashView';
 import useSplashScreen from './useSplashScreen';
-
-const SplashScreen = () => {
-  const { styles } = useSplashScreen();
-
+const SplashScreen: React.FC = () => {
+  const {isSplashEnd} = useSplashScreen();
   return (
-    <View style={styles.container}>
-      <Text>SplashScreen</Text>
-    </View>
+    isSplashEnd ? <Navigator /> : <SplashView />
   );
 };
 
-export default React.memo(SplashScreen);
+export default SplashScreen;

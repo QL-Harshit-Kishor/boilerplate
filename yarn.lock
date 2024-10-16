@@ -3835,6 +3835,7 @@ __metadata:
     react: 18.3.1
     react-i18next: ^15.0.3
     react-native: 0.75.4
+    react-native-device-info: ^13.1.0
     react-native-fast-image: ^8.6.3
     react-native-gesture-handler: ^2.20.0
     react-native-localize: ^3.2.1
@@ -8888,6 +8889,15 @@ __metadata:
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
+  languageName: node
+  linkType: hard
+
+"react-native-device-info@npm:^13.1.0":
+  version: 13.1.0
+  resolution: "react-native-device-info@npm:13.1.0"
+  peerDependencies:
+    react-native: "*"
+  checksum: e05cd870981b8366bcb43f89d8565f123b1c3f727d399db03d7ac5e5cda6d06da3d326d06291e11d4920223dbd3db22631a50e2c3d58d8a8c62e196e59518e8e
   languageName: node
   linkType: hard
 
