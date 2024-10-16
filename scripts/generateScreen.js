@@ -14,6 +14,10 @@ const capitalizeFirstLetter = str => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+const smallFirstLetter = str => {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+};
+
 // Create screen folder
 const screenFolderName = capitalizeFirstLetter(folderName);
 fs.mkdir(`../src/views/${screenFolderName}`, err => {
@@ -21,16 +25,17 @@ fs.mkdir(`../src/views/${screenFolderName}`, err => {
   console.debug(`Folder ${screenFolderName} created successfully`);
 
   const fileName = screenFolderName + 'Screen';
+  const styleFileName = smallFirstLetter(fileName) + 'Styles';
 
   // Create hook file - useExampleScreen.ts
   const hookFile = `
 import {useAppTheme} from '@app/theme';
 import {useMemo} from 'react';
-import ${fileName}Styles from './${fileName}.style';
+import ${styleFileName} from './${fileName}.style';
 
 const use${fileName} = () => {
   const theme = useAppTheme();
-  const styles = useMemo(() => ${fileName}Styles(theme), [theme]);
+  const styles = useMemo(() => ${styleFileName}(theme), [theme]);
   return {
     styles
   };
@@ -52,7 +57,7 @@ export default use${fileName};
   const styleFile = `
 import {StyleSheet} from 'react-native';
 
-const ${fileName}Styles = (theme: AppTheme) =>
+const ${styleFileName} = (theme: AppTheme) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -62,7 +67,7 @@ const ${fileName}Styles = (theme: AppTheme) =>
     },
   });
 
-export default ${fileName}Styles;
+export default ${styleFileName};
 `;
 
   fs.writeFileSync(

@@ -1,22 +1,28 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
 import {PaperProvider} from 'react-native-paper';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {ExampleScreen} from '@app/views';
 import {useDeviceTheme} from '@app/hooks';
 import {ErrorBoundary} from '@app/components';
 import {useAppLangauage} from './i18n';
 import {darkTheme, lightTheme} from './theme';
 import GlobalIndicator from './components/modal/GlobalIndicator';
+import {SplashScreen} from './views';
+import {Provider as ReduxStoreProvider} from 'react-redux';
+import {persistor, store} from './store/redux';
+import {PersistGate} from 'redux-persist/integration/react';
 
 const App = () => {
   return (
     <>
-      <GestureHandlerRootView style={{flex: 1}}>
-        <ErrorBoundary catchErrors='always'>
-          <AppContainer />
-        </ErrorBoundary>
-      </GestureHandlerRootView>
+      <ErrorBoundary catchErrors='always'>
+        <GestureHandlerRootView style={{flex: 1}}>
+          <ReduxStoreProvider store={store} >
+            <PersistGate loading={null} persistor={persistor}>
+              <AppContainer />
+            </PersistGate>
+          </ReduxStoreProvider>
+        </GestureHandlerRootView>
+      </ErrorBoundary>
     </>
 
   );
@@ -24,10 +30,8 @@ const App = () => {
 
 
 const AppContainer = () => {
-
   //! initialize and Apply current locale on app start
   useAppLangauage();
-
   // Get App Mode from settings
   const appTheme = useDeviceTheme();
   // Apply global theme (dark or light)
@@ -36,7 +40,7 @@ const AppContainer = () => {
     <>
       <PaperProvider theme={theme}>
         {/* This will start screen of app -> SplashScreen */}
-        <ExampleScreen />
+        <SplashScreen />
         <>
           {/* Inside this tag can put all global modals */}
           <GlobalIndicator />
